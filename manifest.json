@@ -11,6 +11,6 @@
     },
     "action": {
         "default_popup": "popup/popup.html",
-        "default_icon": "d20-icon.png"
+        "default_icon": "images/d20-icon.png"
       }
   }
