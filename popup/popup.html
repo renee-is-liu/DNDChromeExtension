@@ -6,11 +6,17 @@
   </head>
   <body>
     <h1>DND Combat Tracker</h1>
-    <div>
-      <ul id="round_order">
-      </ul>
+    <div class="combat-action-bar">
+      <button id="combat_action" class="combat-start">Start Combat</button>
+      <button id="round_action" class="hidden">Next Turn</button>
     </div>
-    <div>
+    <div class="character-list">
+      <ul>
+        <li class="star"><span class="character">Name</span><span class="character">Initiative</span></li>
+      </ul>
+      <ul id="round_order"></ul>
+    </div>
+    <div class="character-input">
       <label for="input_character">Name: </label>
       <input type="text" id="input_character">
       <label for="input_initiative">Initiative: </label>

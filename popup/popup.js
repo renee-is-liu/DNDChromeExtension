@@ -1,25 +1,97 @@
 const characterName = document.getElementById("input_character");
 const initiative = document.getElementById("input_initiative");
 let combatRoundOrder = document.getElementById("round_order");
+let roundActionButton = document.getElementById("round_action");
+let saveCharacterButton = document.getElementById("submit_character");
 
-document.getElementById("submit_character").addEventListener("click", () => {
+const statusClasses = ["init-state", "death-state"];
+
+saveCharacterButton.addEventListener("click", () => {
     if (initiative.reportValidity()) {
-        let characterElement = document.createElement("span");
-        characterElement.append(characterName.value);
-        characterElement.classList.add("character", "name");
+        // Create new li element to append to combat round list
+        let nameElement = document.createElement("span");
+        nameElement.append(characterName.value);
+        nameElement.classList.add("character", "name");
 
         let initiativeElement = document.createElement("span");
         initiativeElement.append(initiative.value);
         initiativeElement.classList.add("character", "initiative");
 
-        let roundElement = document.createElement("li")
-        roundElement.append(characterElement, initiativeElement);
+        let characterElement = document.createElement("li");
+        characterElement.classList.add("init-state");
+        characterElement.append(nameElement, initiativeElement);
+        
+        characterElement.addEventListener("click", (event) => {
+            // Change character status when li icon clicked
+            let element = event.target;
+            let currentStateIndex = statusClasses.findIndex((value) => element.classList.contains(value));
+            let newStateIndex = (currentStateIndex + 1) % statusClasses.length;
 
-        combatRoundOrder.append(roundElement);
+            replaceClassUtil(element.classList, statusClasses[currentStateIndex], statusClasses[newStateIndex]);
+        });
+
+        combatRoundOrder.append(characterElement);
         sortList(combatRoundOrder);
+        characterName.value = '';
+        initiative.value = '';
     }
 });
 
+saveCharacterButton.addEventListener("mouseover", () => {
+    const filledIcon = document.createElement("i");
+    filledIcon.classList.add("bi", "bi-check-circle-fill");
+    saveCharacterButton.replaceChild(filledIcon, saveCharacterButton.firstChild);
+});
+
+saveCharacterButton.addEventListener("mouseout", () => {
+    const filledIcon = document.createElement("i");
+    filledIcon.classList.add("bi", "bi-check-circle");
+    saveCharacterButton.replaceChild(filledIcon, saveCharacterButton.firstChild);
+});
+
+document.getElementById("combat_action").addEventListener("click", (event) => {
+    let button = event.target;
+
+    if ("combat-start" === button.classList[0]) {
+        if (combatRoundOrder.hasChildNodes()) {
+            console.log(combatRoundOrder.childNodes);
+            button.innerText = "End Combat";
+            replaceClassUtil(button.classList, "combat-start", "combat-end");
+            replaceClassUtil(roundActionButton.classList, "hidden", "visible");
+            combatRoundOrder.childNodes[0].classList.add("highlight");
+        } else {
+            button.setCustomValidity("No characters present. Please add at least 1 character.");
+            button.reportValidity();
+        }
+        
+    } else if ("combat-end" === button.classList[0]) {
+        button.innerText = "Start Combat";
+        replaceClassUtil(button.classList, "combat-end", "combat-start");
+        replaceClassUtil(roundActionButton.classList, "visible", "hidden");
+        combatRoundOrder.childNodes.forEach((node) => {
+            // Clear any highlight class
+            node.classList.remove("highlight");
+        });
+    }
+});
+
+roundActionButton.addEventListener("click", () => {
+    let characterNodeList = combatRoundOrder.childNodes;
+    let nextNodeIndex = 0;
+    for (let i = 0; i < characterNodeList.length; i++) {
+        let node = characterNodeList[i];
+        if (node.classList.contains("highlight")) {
+            nextNodeIndex = (i + 1) % characterNodeList.length;
+            node.classList.remove("highlight");
+        }
+    }
+    characterNodeList[nextNodeIndex].classList.add("highlight");
+});
+
+function replaceClassUtil(classList, oldClass, newClass) {
+    classList.remove(oldClass);
+    classList.add(newClass);
+}
 
 // Credit: https://stackoverflow.com/questions/8837191/sort-an-html-list-with-javascript
 function sortList(ul){
