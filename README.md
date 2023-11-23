@@ -6,7 +6,7 @@
 4. Select the folder with this cloned repo
 5. Click the puzzle piece on the top right to see your new extension
 ---
-Reference: https://developer.chrome.com/docs/extensions/mv3/getstarted/development-basics/
+Reference: https://developer.chrome.com/docs/extensions/mv3/getstarted/development-basics/  
 Resources:  
 https://emojipedia.org/  
 https://icons.getbootstrap.com/#icon-font
