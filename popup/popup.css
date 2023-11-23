@@ -1,0 +1,26 @@
+body {
+    width: 20rem;
+    height: 17rem;
+  }
+
+input[type="text"] {
+    width: 20%;
+}
+
+input[type="number"] {
+    width: 10%;
+}
+
+.character {
+    padding-right: 1rem;
+}
+
+li {
+    margin-bottom: 1rem;
+}
+
+li:before { 
+    content: '\1F480'; 
+    margin-left: -20px; 
+    margin-right: 10px; 
+} 
