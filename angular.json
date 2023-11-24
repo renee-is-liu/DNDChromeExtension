@@ -20,9 +20,9 @@
             "customWebpackConfig": {
               "path": "./custom-webpack.config.ts"
             },
+            "main": "src/main.ts",
             "outputPath": "dist/dndchrome-extension",
             "index": "src/index.html",
-            "browser": "src/main.ts",
             "polyfills": [
               "zone.js"
             ],
@@ -34,11 +34,7 @@
               "src/manifest.json"
             ],
             "styles": [
-              "src/styles.scss", 
-              "node_modules/bootstrap/dist/css/bootstrap.min.css"
-            ],
-            "scripts": [
-                "node_modules/bootstrap/dist/js/bootstrap.min.js"
+              "src/styles.scss"
             ],
             "optimization": {
               "styles": {
@@ -60,7 +56,7 @@
                   "maximumError": "4kb"
                 }
               ],
-              "outputHashing": "all"
+              "outputHashing": "none"
             },
             "development": {
               "optimization": false,

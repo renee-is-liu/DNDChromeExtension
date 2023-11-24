@@ -3,6 +3,14 @@
     "name": "DM Helper Tool",
     "description": "Tool to help you be a Dungeon Master",
     "version": "1.0",
+    "permissions": [
+      "activeTab",
+      "webNavigation"
+    ],
+    "background": {
+      "service_worker": "background.js",
+      "type": "module"
+    },
     "icons": {
       "16": "assets/d20-icon.png",
       "32": "assets/d20-icon.png",
