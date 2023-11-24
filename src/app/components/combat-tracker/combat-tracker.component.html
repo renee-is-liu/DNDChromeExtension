@@ -1,0 +1,14 @@
+<app-combat-actions-bar (nextTurnEvent)="switchSpotlight()"></app-combat-actions-bar>
+<div class="character-list">
+    <ul>
+      <li class="star"><span class="character">Name</span><span class="character">Initiative</span></li>
+    </ul>
+    <ul>
+        <li *ngFor="let character of characters; let i = index" 
+        [ngClass]="{ highlight: character.isSpotlight, character.status }"
+        (click)="changeStatus(i)">
+          {{ character.name }}  {{ character.initiative }}
+        </li>
+    </ul>
+  </div>
+<app-character-input (newCharacterEvent)="addCharacter($event)"></app-character-input>

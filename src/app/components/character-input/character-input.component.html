@@ -1,0 +1,9 @@
+<div class="character-input">
+    <label>Name: 
+        <input type="text" [(ngModel)]="name">
+    </label>
+    <label>Initiative: 
+        <input type="number" [(ngModel)]="initiative" max="30" min="-10">
+    </label>
+    <button (click)="addNewCharacter()"><i class="bi bi-check-circle"></i></button>
+</div>
