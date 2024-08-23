@@ -5,7 +5,8 @@
     </ul>
     <ul>
         <li *ngFor="let character of characters; let i = index" 
-        [ngClass]="{ highlight: character.isSpotlight, character.status }"
+        [class.highlight]="character.isSpotlight"
+        [ngClass]="[character.status]"
         (click)="changeStatus(i)">
           {{ character.name }}  {{ character.initiative }}
         </li>

@@ -1,5 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { Character } from "../../models/character.model";
+import { Status } from "../../models/status.enum";
 
 @Component({
     selector: "app-combat-tracker",
@@ -27,7 +28,9 @@ export class CombatTrackerComponent implements OnInit {
     }
 
     public changeStatus(index: number): void {
+        let statusList = Object.values(Status).map((value) => value.toString());
         
+        this.characters[index].status
     }
 
     public addCharacter(newCharacter: Character) {
