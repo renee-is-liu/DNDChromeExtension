@@ -1,0 +1,5 @@
+<div class="combat-action-bar">
+    <button *ngIf="!combatStarted" (click)="startCombat()">Start Combat</button>
+    <button *ngIf="combatStarted" (click)="combatStarted = !combatStarted">End Combat</button>
+    <button *ngIf="combatStarted" (click)="nextTurnEvent.emit()">Next Turn</button>
+</div>

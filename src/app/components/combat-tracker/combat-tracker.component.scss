@@ -1,0 +1,28 @@
+.highlight {
+    background-color: lightblue;
+}
+
+li {
+    margin-bottom: 1rem;
+}
+
+li.death-state:before { 
+    content: '\1F480'; 
+    margin-left: -20px; 
+    margin-right: 10px; 
+    cursor: pointer;
+} 
+
+li.normal:before {
+    content: '\1F600'; 
+    margin-left: -20px; 
+    margin-right: 10px; 
+    cursor: pointer;
+}
+
+li.star:before {
+    content: '\2B50'; 
+    margin-left: -20px; 
+    margin-right: 10px; 
+    cursor: pointer;
+}

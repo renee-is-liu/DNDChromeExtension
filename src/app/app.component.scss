@@ -1,0 +1,53 @@
+body {
+    width: 20rem;
+    height: 17rem;
+  }
+
+input[type="text"] {
+    width: 20%;
+}
+
+input[type="number"] {
+    width: 10%;
+}
+
+.character {
+    padding-right: 1rem;
+}
+
+li {
+    margin-bottom: 1rem;
+}
+
+li.death-state:before { 
+    content: '\1F480'; 
+    margin-left: -20px; 
+    margin-right: 10px; 
+    cursor: pointer;
+} 
+
+li.init-state:before {
+    content: '\1F600'; 
+    margin-left: -20px; 
+    margin-right: 10px; 
+    cursor: pointer;
+}
+
+li.star:before {
+    content: '\2B50'; 
+    margin-left: -20px; 
+    margin-right: 10px; 
+    cursor: pointer;
+}
+
+.hidden {
+    visibility: hidden;
+}
+
+.visibile {
+    visibility: visible;
+}
+
+.highlight {
+    background-color: lightblue;
+}
