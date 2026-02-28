@@ -35,5 +35,9 @@ export class CombatTrackerComponent implements OnInit {
 
     public addCharacter(newCharacter: Character) {
         this.characters.push(newCharacter);
+
+        if (this.characters.length > 1) {
+            this.characters.sort((a, b) => b.initiative - a.initiative);
+        }
     }
 }
